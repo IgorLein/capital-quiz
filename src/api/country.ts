@@ -19,12 +19,7 @@ const convertFromApiCountry = (apiCountry: ApiCountry): Country => ({
 });
 
 export const getRandomCountries = async (): Promise<Country[]> => {
-    const url = new URL(COUNTRIES_URL);
-    url.search = new URLSearchParams({
-        fields: 'cca3,name,capital',
-    }).toString();
-
-    const response = await fetch(url);
+    const response = await fetch(`${COUNTRIES_URL}?fields=cca3,name,capital`);
     const apiCountries: ApiCountry[] = await response.json();
     const randomApiCountries: ApiCountry[] = _.sampleSize(apiCountries, RANDOM_COUNTRIES_COUNT);
     return randomApiCountries.map((apiCountry: ApiCountry) => convertFromApiCountry(apiCountry));

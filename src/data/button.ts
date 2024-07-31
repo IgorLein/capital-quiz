@@ -1,6 +1,12 @@
 import _ from 'lodash';
 import { Country } from './country';
 
+export enum ButtonStates {
+    Initial = 'initial',
+    Clicked = 'clicked',
+    Error = 'error',
+};
+
 export interface ButtonData {
     code: string;
     name: string;

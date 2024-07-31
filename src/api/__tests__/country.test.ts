@@ -1,8 +1,8 @@
 import lodashModule from 'lodash'
-import { getRandomCountries, ApiCountry } from '../country'; // Update import path as needed
+import { getRandomCountries, ApiCountry } from '../country';
 import { Country } from '../../data/country';
 
-global.fetch = jest.fn(); // Mock the fetch method
+global.fetch = jest.fn();
 
 describe('country API module', () => {
     describe('getRandomCountries()', () => {
@@ -11,7 +11,7 @@ describe('country API module', () => {
         });
 
         afterEach(() => {
-            jest.clearAllMocks(); // Clear mocks before each test
+            jest.clearAllMocks();
         });
     
         it('should fetch and return random countries', async () => {

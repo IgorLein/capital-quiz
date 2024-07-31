@@ -12,7 +12,7 @@ export interface ButtonData {
     name: string;
 }
 
-const createCountryAndCapitalBtn = (country: Country): [ButtonData, ButtonData] => {
+export const createCountryAndCapitalBtn = (country: Country): [ButtonData, ButtonData] => {
     return [
         {
             code: country.code,

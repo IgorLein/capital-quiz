@@ -15,7 +15,7 @@ describe('country API module', () => {
         });
     
         it('should fetch and return random countries', async () => {
-            // Mock data to simulate API response
+            // mock data to simulate API response
             const mockApiResponse: ApiCountry[] = [
                 { cca3: 'USA', name: { common: 'United States' }, capital: ['Washington, D.C.'] },
                 { cca3: 'CAN', name: { common: 'Canada' }, capital: ['Ottawa'] },
@@ -25,26 +25,26 @@ describe('country API module', () => {
                 { cca3: 'DEU', name: { common: 'Germany' }, capital: ['Berlin'] },
             ];
     
-            // Mocking Fetch response
+            // mocking Fetch response
             (fetch as jest.Mock).mockResolvedValueOnce({
                 json: jest.fn().mockResolvedValueOnce(mockApiResponse),
             });
     
-            // Execute the function
+            // execute the function
             const countries: Country[] = await getRandomCountries();
     
-            // Assertions
+            // assertions
             const expectedUrl = 'https://restcountries.com/v3.1/all?fields=cca3,name,capital';
             expect(fetch).toHaveBeenCalledWith(expectedUrl);
 
-            expect(countries.length).toBe(5); // Ensure we get 5 random countries
+            expect(countries.length).toBe(5); // ensure we get 5 random countries
             countries.forEach(country => {
                 expect(country).toHaveProperty('code');
                 expect(country).toHaveProperty('name');
                 expect(country).toHaveProperty('capital');
             });
     
-            // Ensure received countries are mapped correctly
+            // ensure received countries are mapped correctly
             countries.forEach((country: Country, i) => {
                 const apiCountry = mockApiResponse[i];
                 const expectedCountry: Country = {

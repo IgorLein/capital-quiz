@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { prepareButtonsAndRelations, createCountryAndCapitalBtn } from '../button';
 import { Country } from '../country';
 
@@ -35,10 +34,10 @@ describe('Button Module', () => {
 
             const { buttons, relations } = prepareButtonsAndRelations(countries);
 
-            // Expect there to be 6 buttons (3 countries + 3 capitals)
+            // expect there to be 6 buttons (3 countries + 3 capitals)
             expect(buttons).toHaveLength(6);
 
-            // Verify that each country button is created properly
+            // verify that each country button is created properly
             expect(buttons).toEqual(expect.arrayContaining([
                 { code: 'USA', name: 'United States' },
                 { code: 'USA_capital', name: 'Washington, D.C.' },
@@ -48,7 +47,7 @@ describe('Button Module', () => {
                 { code: 'MEX_capital', name: 'Mexico City' },
             ]));
 
-            // Verify relations using WeakMap
+            // verify relations using WeakMap
             const findBtnByCode = (code: string) => buttons.find((button) => button.code === code) || buttons[0];
             
             expect(relations.has(findBtnByCode('USA'))).toBe(true);
@@ -79,7 +78,7 @@ describe('Button Module', () => {
 
             const { buttons } = prepareButtonsAndRelations(countries);
 
-            // Since buttons are shuffled, we cannot have a fixed expectation,
+            // since buttons are shuffled, we cannot have a fixed expectation,
             // but we can check if the length matches and the content is valid.
             expect(buttons).toHaveLength(6);
             expect(buttons).toEqual(expect.arrayContaining([
